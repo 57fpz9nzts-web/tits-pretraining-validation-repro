@@ -1,0 +1,13 @@
+# Generated figure outputs
+/outputs/main/*
+/outputs/supplementary/*
+!/outputs/main/.gitkeep
+!/outputs/supplementary/.gitkeep
+
+# MATLAB and operating-system transient files
+*.asv
+*.m~
+*.autosave
+slprj/
+Thumbs.db
+.DS_Store

@@ -1,0 +1,16 @@
+{
+  "newTraining": false,
+  "productionChanges": false,
+  "geometryExistingCaseIndices": [
+    3,
+    11
+  ],
+  "plane": "normalized residual Mz=0",
+  "raysPerCase": 181,
+  "holdSeconds": 0.04,
+  "plantStep": 0.02,
+  "purpose": "publication-quality section, unchanged finite unattenuated-demand criterion",
+  "contractAgePoints": 41,
+  "contractPacketSpecificForce": 0,
+  "contractIsCalibratedHardware": false
+}

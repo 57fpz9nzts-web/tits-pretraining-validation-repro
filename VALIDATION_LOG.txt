@@ -1,0 +1,7 @@
+PACKAGE VALIDATION PASS
+  MATLAB release: 2022a
+  Straight operator/scalar product: 1.4142136 / 5.6568543
+  Scalarization ratio: 4.0000001
+  Max replay relative error: 4.14654047e-05
+  Geometry losses: 0.0000000, 0.5404425
+  Counterfactual identity error: 3.25260652e-19

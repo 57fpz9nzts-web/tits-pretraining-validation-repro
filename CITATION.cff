@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility package, please cite the associated manuscript."
+type: software
+title: "Reproducibility Package for Before Training: Implementation-Faithful Validation of Candidate Learning Mechanisms for Articulated Heavy-Truck Platoons"
+version: 1.0.0
+date-released: 2026-09-20
+authors:
+  - family-names: Feng
+    given-names: Jianbo
+  - family-names: Zhang
+    given-names: Jinghang
+  - family-names: Chen
+    given-names: Lingyu
+  - family-names: Gao
+    given-names: Zepeng
+  - family-names: Wei
+    given-names: Henglai
+
