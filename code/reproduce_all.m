@@ -97,28 +97,33 @@ end
 
 function f = plotGeometry(d, C)
 f = canvas(3.55);
-tiledlayout(1, 2, 'Padding', 'compact', 'TileSpacing', 'compact');
+axpos = [.105 .19 .33 .61; .565 .19 .33 .61];
+boxColor = [.37 .41 .46]; holdColor = [.13 .35 .55];
 for j = 1:2
     s = d.sections{j};
     a = s.context;
     B = s.boundary;
     P = B.points;
-    nexttile; hold on;
-    patch([a.lb(1) a.ub(1) a.ub(1) a.lb(1)], [a.lb(2) a.lb(2) a.ub(2) a.ub(2)], ...
-        .94*[1 1 1], 'EdgeColor', C(4,:), 'LineStyle', '--', 'LineWidth', 1.3);
-    patch(P(:,1), P(:,2), .90+.10*C(1,:), 'EdgeColor', C(1,:), 'LineWidth', 1.8);
-    plot([a.lb(1) a.ub(1) a.ub(1) a.lb(1) a.lb(1)], ...
-         [a.lb(2) a.lb(2) a.ub(2) a.ub(2) a.lb(2)], '--', 'Color', C(4,:));
-    plot(0, 0, 'k+', 'MarkerSize', 7);
-    axis equal; axis([-1.6 .7 -1.2 1.2]); cleanAxes();
-    xlabel('p_F = r_F / 150 kN'); ylabel('p_\delta = r_\delta / 0.022 rad');
-    if j == 1, title('(a) Nominal: trim 066'); else, title('(b) Existing stress: front demand 0.495'); end
-    text(-1.5, -1.08, sprintf('max radial loss: %.1f%%', 100*max(1-B.rho./B.actuatorRho)), 'FontSize', 8.5);
-    if j == 1
-        legend('Actuator/governor box', 'Numerical hold section', 'Location', 'northoutside', 'FontSize', 8);
-    end
+    ax = axes('Parent', f, 'Position', axpos(j,:)); hold(ax, 'on');
+    hHold = patch(ax, P(:,1), P(:,2), [.89 .94 .98], ...
+        'EdgeColor', holdColor, 'LineWidth', 1.55);
+    hBox = plot(ax, [a.lb(1) a.ub(1) a.ub(1) a.lb(1) a.lb(1)], ...
+        [a.lb(2) a.lb(2) a.ub(2) a.ub(2) a.lb(2)], '--', ...
+        'Color', boxColor, 'LineWidth', 1.15);
+    plot(ax, 0, 0, '+', 'Color', [.18 .20 .23], 'LineWidth', 1.2, 'MarkerSize', 7);
+    axis(ax, [-1.6 .7 -1.2 1.2]); axis(ax, 'equal');
+    ax.XTick = [-1.5 -1 -.5 0 .5]; ax.YTick = [-1 -.5 0 .5 1];
+    ax.GridColor = [.82 .85 .88]; ax.GridAlpha = .33; ax.LineWidth = .7;
+    ax.FontSize = 9; ax.Box = 'off'; grid(ax, 'on');
+    xlabel(ax, 'p_F = r_F / 150 kN'); ylabel(ax, 'p_\delta = r_\delta / 0.022 rad');
+    if j == 1, t = '(a) Nominal trim 066'; else, t = '(b) Front demand 0.495'; end
+    title(ax, t, 'FontSize', 9.5, 'FontWeight', 'normal');
+    if j == 1, legendAxes = ax; legendHandles = [hBox hHold]; end
 end
-sgtitle('Same normalized plane: p_{Mz}=0; finite one-hold demand criterion', 'FontSize', 10);
+lg = legend(legendAxes, legendHandles, ...
+    {'Command boundary', 'One-hold feasible section'}, ...
+    'Orientation', 'horizontal', 'Box', 'off', 'FontSize', 8.5);
+lg.Units = 'normalized'; lg.Position = [.30 .91 .40 .055];
 end
 
 function f = plotScalarization(d, C)

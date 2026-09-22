@@ -86,5 +86,4 @@ Every MAT file stores a compact frozen structure named `d`, exported from the sc
 
 ## Citation and license
 
-Citation metadata are provided in [CITATION.cff](CITATION.cff). No public repository URL, DOI, ORCID, or license has been invented. The authors must choose a distribution license before making the repository public; see [LICENSE_NOTICE.md](LICENSE_NOTICE.md).
-
+Citation metadata are provided in [CITATION.cff](CITATION.cff). This public repository is the figure-level package referenced by the manuscript. No DOI, ORCID, or reuse license has been invented; see [LICENSE_NOTICE.md](LICENSE_NOTICE.md).
